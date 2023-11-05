@@ -1,7 +1,7 @@
 import ProfilePic from "../../assets/images/userpic.jpg";
 import logo from "../../assets/images/logo.png";
-import { Link, NavLink } from "react-router-dom";
 import "../../assets/all css/style.css";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -33,74 +33,69 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content mt-8 z-[1] p-2 shadow bg-base-100 rounded-sm w-52"
               >
                 <li className=" group static">
-                  <Link
-                    to="/"
-                    className=" no-underline active:bg-green-600 active:text-white"
-                  >
-                    <div className="avatar ">
+                <div className="avatar">
                       <div className="w-12 rounded-full">
                         <img src={ProfilePic} />
                       </div>
                     </div>
-                  </Link>
                   <ul className="hidden group-hover:block p-3 static ">
                     <li>
-                      <Link
+                      <NavLink
                         to="/"
-                        className="no-underline active:bg-green-600 active:text-white"
+                        className="no-underline rounded-md py-2"
                       >
                         Add job
-                      </Link>
+                      </NavLink>
                     </li>
                     <li>
-                      <Link
+                      <NavLink
                         to="/"
-                        className="no-underline active:bg-green-600 active:text-white"
+                        className="no-underline rounded-md py-2"
                       >
                         My posted jobs
-                      </Link>
+                      </NavLink>
                     </li>
                     <li>
-                      <Link
+                      <NavLink
                         to="/"
-                        className="no-underline active:bg-green-600 active:text-white"
+                        className="no-underline rounded-md py-2 "
                       >
                         My Bids
-                      </Link>
+                      </NavLink>
                     </li>
                     <li>
-                      <Link
+                      <NavLink
                         to="/"
-                        className="no-underline active:bg-green-600 active:text-white"
+                        className="no-underline rounded-md py-2 "
                       >
                         Bid Requests
-                      </Link>
+                      </NavLink>
                     </li>
                   </ul>
                 </li>
                 <li>
-                  <Link
+                  <NavLink
                     to="/"
-                    className=" no-underline active:bg-green-600 active:text-white "
+                    className=" no-underline rounded-md py-2  "
                   >
                     Home
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
-                    to="/"
-                    className=" no-underline active:bg-green-600 active:text-white "
+                  <NavLink
+                    to="/authentication/login"
+                    className=" no-underline rounded-md py-2 "
                   >
                     Login
-                  </Link>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link
-                    to="/"
-                    className=" no-underline active:bg-green-600 active:text-white "
+                  <NavLink
+                    to="/authentication/signup"
+                    className=" no-underline rounded-md py-2  "
                   >
                     Signup
-                  </Link>
+                  </NavLink>
                 </li>
               </ul>
             </div>
@@ -111,31 +106,31 @@ const Navbar = () => {
           <div className="relative hidden md:block">
             <ul className="flex items-center gap-2">
               <li>
-                <Link
+                <NavLink
                   to="/"
-                  className="no-underline active:bg-green-600 active:text-white px-5 py-2 rounded-md"
+                  className="no-underline px-5 py-2 rounded-md"
                 >
                   Home
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
-                  to="/"
-                  className="no-underline active:bg-green-600 active:text-white px-5 py-2 rounded-md"
+                <NavLink
+                  to="/authentication/login"
+                  className="no-underline px-5 py-2 rounded-md"
                 >
                   Login
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
-                  to="/"
-                  className="no-underline active:bg-green-600 active:text-white px-5 py-2 rounded-md"
+                <NavLink
+                  to="/authentication/signup"
+                  className="no-underline  px-5 py-2 rounded-md"
                 >
                   Signup
-                </Link>
+                </NavLink>
               </li>
               <li className="dropdown">
-                <Link>
+                <NavLink>
                   <summary className="">
                     <div className="avatar ">
                       <div className="w-12 rounded-full">
@@ -143,39 +138,39 @@ const Navbar = () => {
                       </div>
                     </div>
                   </summary>
-                </Link>
+                </NavLink>
                 <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 mt-4 left-[-162px] w-52">
                   <li>
-                    <Link
+                    <NavLink
                       to="/"
-                      className="no-underline active:bg-green-900 block px-5 py-2 rounded-md"
+                      className="no-underline  block px-5 py-2 rounded-md"
                     >
                       Add job
-                    </Link>
+                    </NavLink>
                   </li>
                   <li>
-                    <Link
+                    <NavLink
                       to="/"
-                      className="no-underline active:bg-green-900 block px-5 py-2 rounded-md"
+                      className="no-underline  block px-5 py-2 rounded-md"
                     >
                       My posted jobs
-                    </Link>
+                    </NavLink>
                   </li>
                   <li>
-                    <Link
+                    <NavLink
                       to="/"
-                      className="no-underline active:bg-green-900 block px-5 py-2 rounded-md"
+                      className="no-underline  block px-5 py-2 rounded-md"
                     >
                       My Bids
-                    </Link>
+                    </NavLink>
                   </li>
                   <li>
-                    <Link
+                    <NavLink
                       to="/"
-                      className="no-underline active:bg-green-900 block px-5 py-2 rounded-md"
+                      className="no-underline block px-5 py-2 rounded-md"
                     >
                       Bid Requests
-                    </Link>
+                    </NavLink>
                   </li>
                 </ul>
               </li>

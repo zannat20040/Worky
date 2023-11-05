@@ -1,8 +1,4 @@
-.navbar-lg{
-    position: relative;
-    
-}
-.dropdown-nav{
-    bottom: -107px;
-    position: absolute;
+.active{
+    color: white!important;
+    background-color: rgb(8, 83, 8)!important;
 }
