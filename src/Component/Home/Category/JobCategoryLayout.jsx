@@ -5,12 +5,16 @@ import { Link } from "react-router-dom";
 
 const JobCategoryLayout = ({ item }) => {
   const firstLine = item.description.split(".")[0];
-  console.log(item);
+
   return (
     <div className="card card-side bg-base-100 border p-8 rounded-md items-start gap-5">
       <div className="w-28  rounded-lg">
-        <figure className="rounded-lg" >
-          <img className=" w-60 h-20 rounded-lg" src={item?.photo} alt="Movie" />
+        <figure className="rounded-lg">
+          <img
+            className=" w-60 h-20 rounded-lg"
+            src={item?.photo}
+            alt="Movie"
+          />
         </figure>
       </div>
       <div className="card-body p-0">
@@ -30,7 +34,12 @@ const JobCategoryLayout = ({ item }) => {
         </div>
 
         <div className="card-actions ">
-        <Link to={`/addjobs/${item._id}`}><button className="btn btn-outline bg-green-600 border-0 mt-3 text-white text-xs tracking-widest">Bid now</button></Link>
+          <Link
+            to={`/addjobs/${item._id}`}
+            className="btn btn-outline bg-green-600 border-0 mt-3 text-white text-xs tracking-widest"
+          >
+            Bid for this job
+          </Link>
         </div>
       </div>
     </div>

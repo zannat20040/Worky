@@ -11,6 +11,7 @@ import Authentication from "./Authentication/Authentication.jsx";
 import Signup from "./Authentication/Signup/Signup.jsx";
 import PrivateRoute from "./Private Route/PrivateRoute.jsx";
 import AddJobs from "./Component/Add jobs/AddJobs.jsx";
+import JobDetails from "./Component/Job Details/JobDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/addjobs/:id",
-        element:<PrivateRoute></PrivateRoute>
+        element:<PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
+        loader: ({params})=>fetch(`http://localhost:5000/addjobs`)
       },
       
     ],

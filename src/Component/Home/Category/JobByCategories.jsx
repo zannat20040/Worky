@@ -25,7 +25,6 @@ const JobByCategories = () => {
   ];
 
   const HandleTab = (category) => {
-    console.log(category);
 
     axios
       .get(`http://localhost:5000/addjobs/${category}`)
@@ -48,7 +47,7 @@ const JobByCategories = () => {
       <Tabs>
       <TabList className="flex justify-center text-base border-b border-green-600 text-center">
         {catagoryList.map((item) => (
-          <Tab  onClick={() => setSelectedTab(item.categoryType)}>
+          <Tab  onClick={() => setSelectedTab(item.categoryType)} key={item.id}>
             {item.categoryType}
           </Tab>
         ))}
@@ -58,7 +57,7 @@ const JobByCategories = () => {
           <TabPanel>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-10">
             {jobByCategory.map((item) => (
-              <JobCategoryLayout item={item}></JobCategoryLayout>
+              <JobCategoryLayout item={item} key={item._id}></JobCategoryLayout>
             ))}
             </div>
           </TabPanel>
