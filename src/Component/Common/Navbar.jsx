@@ -2,8 +2,24 @@ import ProfilePic from "../../assets/images/userpic.jpg";
 import logo from "../../assets/images/logo.png";
 import "../../assets/all css/style.css";
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import swal from 'sweetalert';
+
 
 const Navbar = () => {
+  const { user,passwordSignOut,setuser } = useContext(AuthContext);
+
+  const HandleLogout=()=>{
+    passwordSignOut()
+    .then(()=>{
+      swal("Good job!", "Logged out successfully!", "success");
+    })
+    .catch(error=>{
+      swal("Opps!", error , "error");
+    })
+  }
+
   return (
     <div className="bg-gray-100">
       <div className="container mx-auto px-4">
@@ -33,70 +49,75 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content mt-8 z-[1] p-2 shadow bg-base-100 rounded-sm w-52"
               >
                 <li className=" group static">
-                <div className="avatar">
-                      <div className="w-12 rounded-full">
+                  <div className="avatar">
+                    <div className="w-12 rounded-full">
+                      {user ? (
+                        <img src={user.photoURL} />
+                      ) : (
                         <img src={ProfilePic} />
-                      </div>
+                      )}
                     </div>
+                  </div>
                   <ul className="hidden group-hover:block p-3 static ">
                     <li>
-                      <NavLink
-                        to="/"
-                        className="no-underline rounded-md py-2"
-                      >
+                      <NavLink to="/" className="no-underline rounded-md py-2">
                         Add job
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink
-                        to="/"
-                        className="no-underline rounded-md py-2"
-                      >
+                      <NavLink to="/" className="no-underline rounded-md py-2">
                         My posted jobs
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink
-                        to="/"
-                        className="no-underline rounded-md py-2 "
-                      >
+                      <NavLink to="/" className="no-underline rounded-md py-2 ">
                         My Bids
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink
-                        to="/"
-                        className="no-underline rounded-md py-2 "
-                      >
+                      <NavLink to="/" className="no-underline rounded-md py-2 ">
                         Bid Requests
                       </NavLink>
                     </li>
                   </ul>
                 </li>
+                {user && (
+                  <li>
+                    <p>{user.displayName}</p>
+                  </li>
+                )}
                 <li>
-                  <NavLink
-                    to="/"
-                    className=" no-underline rounded-md py-2  "
-                  >
+                  <NavLink to="/" className=" no-underline rounded-md py-2  ">
                     Home
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink
-                    to="/authentication/login"
-                    className=" no-underline rounded-md py-2 "
-                  >
-                    Login
-                  </NavLink>
+                  {user ? (
+                    <NavLink onClick={HandleLogout}
+                      to="/authentication/login"
+                      className=" no-underline rounded-md py-2 "
+                    >
+                      Logout
+                    </NavLink>
+                  ) : (
+                    <NavLink
+                      to="/authentication/login"
+                      className=" no-underline rounded-md py-2 "
+                    >
+                      Login
+                    </NavLink>
+                  )}
                 </li>
-                <li>
-                  <NavLink
-                    to="/authentication/signup"
-                    className=" no-underline rounded-md py-2  "
-                  >
-                    Signup
-                  </NavLink>
-                </li>
+                {!user && (
+                  <li>
+                    <NavLink
+                      to="/authentication/signup"
+                      className=" no-underline rounded-md py-2  "
+                    >
+                      Signup
+                    </NavLink>
+                  </li>
+                )}
               </ul>
             </div>
             <img src={logo} alt="" className="w-52" />
@@ -106,35 +127,49 @@ const Navbar = () => {
           <div className="relative hidden md:block">
             <ul className="flex items-center gap-2">
               <li>
-                <NavLink
-                  to="/"
-                  className="no-underline px-5 py-2 rounded-md"
-                >
+                <NavLink to="/" className="no-underline px-5 py-2 rounded-md">
                   Home
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  to="/authentication/login"
-                  className="no-underline px-5 py-2 rounded-md"
-                >
-                  Login
-                </NavLink>
+                {user ? (
+                  <NavLink onClick={HandleLogout}
+                    to="/authentication/login"
+                    className="no-underline px-5 py-2 rounded-md"
+                  >
+                    Logout
+                  </NavLink>
+                ) : (
+                  <NavLink
+                    to="/authentication/login"
+                    className="no-underline px-5 py-2 rounded-md"
+                  >
+                    Login
+                  </NavLink>
+                )}
               </li>
               <li>
-                <NavLink
-                  to="/authentication/signup"
-                  className="no-underline  px-5 py-2 rounded-md"
-                >
-                  Signup
-                </NavLink>
+                {user ? (
+                  <p>{user.displayName}</p>
+                ) : (
+                  <NavLink
+                    to="/authentication/signup"
+                    className="no-underline  px-5 py-2 rounded-md"
+                  >
+                    Signup
+                  </NavLink>
+                )}
               </li>
               <li className="dropdown">
                 <NavLink>
                   <summary className="">
                     <div className="avatar ">
                       <div className="w-12 rounded-full">
-                        <img src={ProfilePic} />
+                        {user ? (
+                          <img src={user.photoURL} />
+                        ) : (
+                          <img src={ProfilePic} />
+                        )}
                       </div>
                     </div>
                   </summary>

@@ -11,7 +11,7 @@ const Authentication = () => {
 	 <div className=" w-full md:w-3/5 mx-auto mt-20 shadow-xl p-5">
         <AuthenticationLayout></AuthenticationLayout>
         <h1 className="text-4xl font-bold text-center mt-9 ">
-          Welcome to <span className="text-green-600">Worky!</span>
+          Welcome to <span className="text-green-800">Worky!</span>
         </h1>
 		<p className="text-gray-400  mt-3 text-center">Join our community of job seekers and employers to discover new opportunities and connect with professionals. We're excited to have you on board.</p>
         <Outlet></Outlet>

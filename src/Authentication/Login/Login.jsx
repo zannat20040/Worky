@@ -1,45 +1,45 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../AuthProvider/AuthProvider';
+import React, { useContext} from "react";
+import LoginLayout from "./LoginLayout";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import swal from 'sweetalert';
 
 const Login = () => {
+  const { loginWithPass, googleSignIn } = useContext(AuthContext);
 
-    const {hello} =useContext(AuthContext)
-    return (
-        <div className="card flex-shrink-0 w-full ">
-    <form className="card-body">
-    
-      <div className="form-control">
-        <label className="label">
-          <span className="label-text">Email</span>
-        </label>
-        <input
-          type="email"
-          placeholder="email"
-          className="input input-bordered"
-          required
-          name="email"
-        />
-      </div>
-      
-      <div className="form-control">
-        <label className="label">
-          <span className="label-text">Password</span>
-        </label>
-        <input
-          type="password"
-          placeholder="password"
-          className="input input-bordered"
-          required
-          name="password"
-        />
-       
-      </div>
-      <div className="form-control mt-6">
-      <button className="btn btn-outline bg-green-600 text-white">Login</button>
-      </div>
-    </form>
-  </div>
-    );
+  const HandleLogin = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    loginWithPass(email, password)
+      .then((userCredential) => {
+        swal("Good job!", "Logged in successfully!", "success");
+      })
+      .catch((error) => {
+        swal("Opps!", error.message , "error");
+      });
+  };
+
+  const HandleGoogleSignin = () => {
+    googleSignIn()
+      .then((result) => {
+        swal("Good job!", "Logged in successfully!", "success");
+      })
+      .catch((error) => {
+        swal("Opps!", error , "error");
+      });
+  };
+
+ 
+  
+  return (
+    <LoginLayout
+      HandleLogin={HandleLogin}
+      HandleGoogleSignin={HandleGoogleSignin}
+    ></LoginLayout>
+  );
 };
 
 export default Login;

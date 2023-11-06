@@ -1,71 +1,55 @@
-import React from "react";
-import signup from "../../assets/images/signup.jpeg";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import SignupLayout from "./SignupLayout";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { updateProfile } from "firebase/auth";
+import swal from 'sweetalert';
 
 const Signup = () => {
-  return (
-    <div className="card flex-shrink-0 w-full ">
-    <form className="card-body p-2">
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-    <div className="form-control">
-        <label className="label">
-          <span className="label-text">Full name</span>
-        </label>
-        <input
-          type="text"
-          placeholder="name"
-          className="input input-bordered"
-          required
-          name="name"
-        />
-       
-      </div>
-      <div className="form-control">
-        <label className="label">
-          <span className="label-text">Photo URL</span>
-        </label>
-        <input
-          type="url"
-          placeholder="url"
-          className="input input-bordered"
-          required
-          name="url"
-        />
-       
-      </div>
-    </div>
-      <div className="form-control">
-        <label className="label">
-          <span className="label-text">Email</span>
-        </label>
-        <input
-          type="email"
-          placeholder="email"
-          className="input input-bordered"
-          required
-          name="email"
-        />
-      </div>
-      
-      <div className="form-control">
-        <label className="label">
-          <span className="label-text">Password</span>
-        </label>
-        <input
-          type="password"
-          placeholder="password"
-          className="input input-bordered"
-          required
-          name="password"
-        />
-       
-      </div>
-      <div className="form-control mt-6">
-      <button className="btn btn-outline bg-green-600 text-white">Signup</button>
-      </div>
-    </form>
-  </div>
-  );
+  const { createWithPass , googleSignIn} = useContext(AuthContext);
+
+  const HandleSignup = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const url = form.url.value;
+
+    // console.log(name, email, password, url);
+
+    createWithPass(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user
+        swal("Good job!", "Signed up successfully!", "success");
+
+        updateProfile(user ,{
+          displayName: name,
+          photoURL: url
+        })
+          .then(() => {
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+      })
+      .catch((error) => {
+        swal("Opps!", error.message , "error");
+      });
+
+  };
+
+const HandleGoogleSignin =()=>{
+  googleSignIn()
+    .then((result) => {
+      swal("Good job!", "Signed up successfully!", "success");
+    }).catch((error) => {
+      swal("Opps!", error , "error");
+    });
+}
+
+  return <SignupLayout HandleSignup={HandleSignup} HandleGoogleSignin={HandleGoogleSignin}></SignupLayout>;
 };
 
 export default Signup;
