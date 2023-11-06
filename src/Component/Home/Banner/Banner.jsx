@@ -3,14 +3,14 @@ import React from "react";
 const Banner = () => {
   return (
     <div
-      className="hero min-h-screen"
+      className="hero min-h-full"
       style={{
         backgroundImage:
           "url(https://disabilityinsider.com/wp-content/uploads/2022/02/close-up-hand-with-laptop-838x525.jpg)",
       }}
     >
-      <div className="hero-overlay bg-opacity-60"></div>
-      <div className="hero-content text-center text-neutral-content">
+      <div className="hero-overlay bg-opacity-60 "></div>
+      <div className="hero-content text-center text-neutral-content py-52">
         <div className="max-w-2xl">
           <h1 className="mb-5 text-5xl font-bold">Welcome to Worky</h1>
           <p className="mb-5">

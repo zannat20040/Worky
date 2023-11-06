@@ -44,11 +44,11 @@ const JobByCategories = () => {
 
   return (
     <div className="container mx-auto mt-9  px-4">
-      <h1 className="text-5xl text-green-700 font-bold text-center py-5 mb-10">Find By Catagory</h1>
+      <h1 className="text-5xl text-green-700 font-bold text-center py-5 mb-10">Job By Catagory</h1>
       <Tabs>
-      <TabList className="flex justify-center text-base border-b border-green-600">
+      <TabList className="flex justify-center text-base border-b border-green-600 text-center">
         {catagoryList.map((item) => (
-          <Tab onClick={() => setSelectedTab(item.categoryType)}>
+          <Tab  onClick={() => setSelectedTab(item.categoryType)}>
             {item.categoryType}
           </Tab>
         ))}
@@ -56,7 +56,7 @@ const JobByCategories = () => {
 
       {catagoryList.map(() => (
           <TabPanel>
-            <div className="grid grid-cols-2 gap-5 mt-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-10">
             {jobByCategory.map((item) => (
               <JobCategoryLayout item={item}></JobCategoryLayout>
             ))}
