@@ -60,7 +60,7 @@ const Navbar = () => {
                   </div>
                   <ul className="hidden group-hover:block p-3 static ">
                     <li>
-                      <NavLink to="/" className="no-underline rounded-md py-2">
+                      <NavLink to="/addjobs" className="no-underline rounded-md py-2">
                         Add job
                       </NavLink>
                     </li>
@@ -177,7 +177,7 @@ const Navbar = () => {
                 <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 mt-4 left-[-162px] w-52">
                   <li>
                     <NavLink
-                      to="/"
+                      to="/addjobs"
                       className="no-underline  block px-5 py-2 rounded-md"
                     >
                       Add job
