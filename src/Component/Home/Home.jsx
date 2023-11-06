@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../Common/Navbar";
+import axios from "axios";
+import JobByCategories from "./Category/JobByCategories";
+
 
 const Home = () => {
+ 
   return (
-    <div>
-      <h1>home page</h1>
-      
-    </div>
+    <>
+    
+     <JobByCategories></JobByCategories>
+    </>
   );
 };
 

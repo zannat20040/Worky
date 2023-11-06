@@ -5,13 +5,17 @@ const AddJobsLayout = ({ HandleAddJobs }) => {
   const { user } = useContext(AuthContext);
 
   return (
-    <div className="w-full md:w-3/5 mx-auto mt-20 shadow-2xl rounded-md p-10 ">
+    <div className="px-3">
+        <div className="w-full md:w-3/5 mx-auto mt-20 shadow-2xl rounded-md md:p-10 p-5 ">
       <div>
         <h1 className="text-4xl font-bold text-green-700 py-7">
           Posted a New Job
         </h1>
         <div className="card flex-shrink-0 w-full ">
           <form className="card-body p-2" onSubmit={HandleAddJobs}>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+             
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Job title</span>
@@ -24,14 +28,40 @@ const AddJobsLayout = ({ HandleAddJobs }) => {
                 name="title"
               />
             </div>
+
+             
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Job Thummbnail</span>
+              </label>
+              <input
+                type="url"
+                placeholder="photo url"
+                className="input input-bordered"
+                required
+                name="photo"
+              />
+            </div>
+            </div>
+            
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Job description</span>
               </label>
               <textarea
-                placeholder="write here....."
+                placeholder="write description here....."
                 className="textarea textarea-bordered h-32"
                 name="description"
+              ></textarea>
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Job Requirement</span>
+              </label>
+              <textarea
+                placeholder="give your requirement here....."
+                className="textarea textarea-bordered h-32"
+                name="requirement"
               ></textarea>
             </div>
 
@@ -112,6 +142,7 @@ const AddJobsLayout = ({ HandleAddJobs }) => {
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 };

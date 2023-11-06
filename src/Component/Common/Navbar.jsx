@@ -4,24 +4,23 @@ import "../../assets/all css/style.css";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-import swal from 'sweetalert';
-
+import swal from "sweetalert";
 
 const Navbar = () => {
-  const { user,passwordSignOut,setuser } = useContext(AuthContext);
+  const { user, passwordSignOut, setuser } = useContext(AuthContext);
 
-  const HandleLogout=()=>{
+  const HandleLogout = () => {
     passwordSignOut()
-    .then(()=>{
-      swal("Good job!", "Logged out successfully!", "success");
-    })
-    .catch(error=>{
-      swal("Opps!", error , "error");
-    })
-  }
+      .then(() => {
+        swal("Good job!", "Logged out successfully!", "success");
+      })
+      .catch((error) => {
+        swal("Opps!", error, "error");
+      });
+  };
 
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 sticky top-0 z-20">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           {/* left side */}
@@ -60,7 +59,10 @@ const Navbar = () => {
                   </div>
                   <ul className="hidden group-hover:block p-3 static ">
                     <li>
-                      <NavLink to="/addjobs" className="no-underline rounded-md py-2">
+                      <NavLink
+                        to="/addjobs"
+                        className="no-underline rounded-md py-2"
+                      >
                         Add job
                       </NavLink>
                     </li>
@@ -93,7 +95,8 @@ const Navbar = () => {
                 </li>
                 <li>
                   {user ? (
-                    <NavLink onClick={HandleLogout}
+                    <NavLink
+                      onClick={HandleLogout}
                       to="/authentication/login"
                       className=" no-underline rounded-md py-2 "
                     >
@@ -133,7 +136,8 @@ const Navbar = () => {
               </li>
               <li>
                 {user ? (
-                  <NavLink onClick={HandleLogout}
+                  <NavLink
+                    onClick={HandleLogout}
                     to="/authentication/login"
                     className="no-underline px-5 py-2 rounded-md"
                   >
