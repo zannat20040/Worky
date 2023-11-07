@@ -18,7 +18,7 @@ const JobDetailsLayout = ({ findJob,HandleJobBid }) => {
     category,
   } = findJob;
 
-  const requirementList = requirement.split(/\d+\.\s/).filter(Boolean);
+  const requirementList = requirement.split(/\d+\./).filter(Boolean);
   return (
     <>
       <div className="bg-green-50">
@@ -45,6 +45,7 @@ const JobDetailsLayout = ({ findJob,HandleJobBid }) => {
           <div>
             <h2 className="card-title mb-4 text-green-600">Job Requirement</h2>
             {requirementList.map((item) => (
+              
               <div className="flex gap-2 items-center ml-4">
                 <TbPointFilled className=" text-green-600  "></TbPointFilled>
                 <p className="text-gray-500 mb-2 ">{item}</p>

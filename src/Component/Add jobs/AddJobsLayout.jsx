@@ -56,7 +56,10 @@ const AddJobsLayout = ({ HandleAddJobs }) => {
                   <span className="label-text">Job Requirement</span>
                 </label>
                 <textarea
-                  placeholder="give your requirement here....."
+                  placeholder={`Write here your requirement like this..
+                  1.requirement 1
+                  2.requirement 2 
+                 `}
                   className="textarea textarea-bordered h-32"
                   name="requirement"
                 ></textarea>
