@@ -72,12 +72,12 @@ const Navbar = () => {
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/" className="no-underline rounded-md py-2 ">
+                      <NavLink to="/mybids" className="no-underline rounded-md py-2 ">
                         My Bids
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/" className="no-underline rounded-md py-2 ">
+                      <NavLink to="/bidrequest" className="no-underline rounded-md py-2 ">
                         Bid Requests
                       </NavLink>
                     </li>
@@ -197,7 +197,7 @@ const Navbar = () => {
                   </li>
                   <li>
                     <NavLink
-                      to="/"
+                      to="/mybids"
                       className="no-underline  block px-5 py-2 rounded-md"
                     >
                       My Bids
@@ -205,7 +205,7 @@ const Navbar = () => {
                   </li>
                   <li>
                     <NavLink
-                      to="/"
+                      to="/bidrequest"
                       className="no-underline block px-5 py-2 rounded-md"
                     >
                       Bid Requests

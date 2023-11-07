@@ -5,9 +5,9 @@ import axios from "axios";
 
 const JobDetails = () => {
   const jobDetailsById = useLoaderData();
-  const jobDetails = jobDetailsById[0]
+  const jobDetails = jobDetailsById[0];
 
-  const HandleJobBid = (e) => {
+  const HandleJobBid = (e, title,id) => {
     e.preventDefault();
 
     const form = e.target;
@@ -15,7 +15,7 @@ const JobDetails = () => {
     const deadline = form.deadline.value;
     const jobOwner = form.jobOwner.value;
     const bidBy = form.bidBy.value;
-    const jobId = params.id;
+    const jobId = id;
 
     const sellerBid = {
       bidAmount: bidAmount,
@@ -23,9 +23,12 @@ const JobDetails = () => {
       jobOwner: jobOwner,
       bidBy: bidBy,
       jobId: jobId,
+      title: title,
+      status: "pending",
     };
 
-    // console.log(sellerBid)
+
+    console.log(sellerBid)
 
     axios
     .post("http://localhost:5000/bids", sellerBid)
@@ -38,14 +41,11 @@ const JobDetails = () => {
     .catch((error) => {
       console.log(error);
     });
-
   };
-
-
 
   return (
     <JobDetailsLayout
-    jobDetails={jobDetails}
+      jobDetails={jobDetails}
       HandleJobBid={HandleJobBid}
     ></JobDetailsLayout>
   );

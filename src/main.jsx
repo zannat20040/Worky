@@ -14,8 +14,8 @@ import AddJobs from "./Component/Add jobs/AddJobs.jsx";
 import JobDetails from "./Component/Job Details/JobDetails.jsx";
 import PostedJobs from "./Component/Posted Jobs/PostedJobs.jsx";
 import UpdateDetails from "./Component/Update job/UpdateDetails.jsx";
-import axios from "axios";
-import JobDetail from "./JobDetail.jsx";
+import Bid from "./Component/Bid page/Bid.jsx";
+import BidReq from "./Component/Bid Request/BidReq.jsx";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +44,16 @@ const router = createBrowserRouter([
         path: "/updatejob/:id",
         element:<PrivateRoute><UpdateDetails></UpdateDetails></PrivateRoute>,
         loader: ()=>fetch(`http://localhost:5000/addjobs`)
+      },
+      {
+        path: "/mybids",
+        element: <PrivateRoute><Bid></Bid></PrivateRoute>,
+        loader: ()=>fetch(`http://localhost:5000/bids`)
+      },
+      {
+        path: "/bidrequest",
+        element: <PrivateRoute><BidReq></BidReq></PrivateRoute>,
+        loader: ()=>fetch(`http://localhost:5000/bids`)
       },
       
     ],

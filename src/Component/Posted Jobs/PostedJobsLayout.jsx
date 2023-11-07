@@ -38,7 +38,7 @@ const PostedJobsLayout = ({ item, HandleDelete }) => {
           >
             Update Job Details
           </Link>
-          <Link onClick={()=>HandleDelete(_id)} className="btn btn-outline bg-green-600 border-0 text-white text-xs tracking-widest">
+          <Link onClick={()=>HandleDelete(item._id)} className="btn btn-outline bg-green-600 border-0 text-white text-xs tracking-widest">
             Delete This Job
           </Link>
         </div>

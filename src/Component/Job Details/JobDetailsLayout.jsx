@@ -7,6 +7,7 @@ import { TbPointFilled } from "react-icons/tb";
 const JobDetailsLayout = ({ jobDetails,HandleJobBid }) => {
   const { user } = useContext(AuthContext);
   const {
+    _id,
     title,
     requirement,
     photo,
@@ -78,7 +79,7 @@ const JobDetailsLayout = ({ jobDetails,HandleJobBid }) => {
                 Place your Bid
               </h1>
               <div className="card flex-shrink-0 w-full ">
-                <form className="card-body p-2" onSubmit={HandleJobBid}>
+                <form className="card-body p-2" onSubmit={(e)=>HandleJobBid(e, title,_id)}>
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">Your email</span>
