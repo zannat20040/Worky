@@ -3,7 +3,7 @@ import { CiDollar } from "react-icons/ci";
 import { SlCalender } from "react-icons/sl";
 import { Link } from "react-router-dom";
 
-const PostedJobsLayout = ({ item }) => {
+const PostedJobsLayout = ({ item, HandleDelete }) => {
   return (
     <div className="card sm:card-side bg-base-100 border p-8 mb-4 rounded-md items-start gap-5">
       <div className="w-28  rounded-lg ">
@@ -38,7 +38,7 @@ const PostedJobsLayout = ({ item }) => {
           >
             Update Job Details
           </Link>
-          <Link className="btn btn-outline bg-green-600 border-0 text-white text-xs tracking-widest">
+          <Link onClick={()=>HandleDelete(_id)} className="btn btn-outline bg-green-600 border-0 text-white text-xs tracking-widest">
             Delete This Job
           </Link>
         </div>

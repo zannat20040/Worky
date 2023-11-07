@@ -11,6 +11,29 @@ const PostedJobs = () => {
     (item) => item.email === user.email
   );
 
+
+  const HandleDelete =(id)=>{
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this imaginary file!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+
+        axios.delete(`http://localhost:5000/addjobs/${id}`)
+        swal("Poof! Your imaginary file has been deleted!", {
+          icon: "success",
+        });
+      } else {
+        swal("Your imaginary file is safe!");
+      }
+    });
+
+
+  }
   return (
     <div className="bg-green-50">
       <div className=" container mx-auto py-6  px-4 pb-52 ">
@@ -18,7 +41,7 @@ const PostedJobs = () => {
           My all posted Jobs
         </h1>
         {myPostedJobs.map((item) => (
-          <PostedJobsLayout item={item} key={item._id}></PostedJobsLayout>
+          <PostedJobsLayout item={item} key={item._id} HandleDelete={HandleDelete}></PostedJobsLayout>
         ))}
       </div>
     </div>

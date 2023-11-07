@@ -4,7 +4,7 @@ import { SlCalender } from "react-icons/sl";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { TbPointFilled } from "react-icons/tb";
 
-const JobDetailsLayout = ({ findJob,HandleJobBid }) => {
+const JobDetailsLayout = ({ jobDetails,HandleJobBid }) => {
   const { user } = useContext(AuthContext);
   const {
     title,
@@ -15,8 +15,8 @@ const JobDetailsLayout = ({ findJob,HandleJobBid }) => {
     email,
     description,
     deadline,
-    category,
-  } = findJob;
+    category
+  } = jobDetails;
 
   const requirementList = requirement.split(/\d+\./).filter(Boolean);
   return (

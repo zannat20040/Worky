@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const JobCategoryLayout = ({ item }) => {
   const firstLine = item.description.split(".")[0];
 
+
   return (
     <div className="card card-side bg-base-100 border p-8 rounded-md items-start gap-5">
       <div className="w-28  rounded-lg">

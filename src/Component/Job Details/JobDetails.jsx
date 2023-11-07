@@ -4,10 +4,8 @@ import { useLoaderData, useParams } from "react-router-dom";
 import axios from "axios";
 
 const JobDetails = () => {
-  const jobDetails = useLoaderData();
-  const params = useParams();
-
-  const findJob = jobDetails.find((item) => item._id === params.id);
+  const jobDetailsById = useLoaderData();
+  const jobDetails = jobDetailsById[0]
 
   const HandleJobBid = (e) => {
     e.preventDefault();
@@ -27,7 +25,7 @@ const JobDetails = () => {
       jobId: jobId,
     };
 
-    console.log(sellerBid)
+    // console.log(sellerBid)
 
     axios
     .post("http://localhost:5000/bids", sellerBid)
@@ -47,7 +45,7 @@ const JobDetails = () => {
 
   return (
     <JobDetailsLayout
-      findJob={findJob}
+    jobDetails={jobDetails}
       HandleJobBid={HandleJobBid}
     ></JobDetailsLayout>
   );

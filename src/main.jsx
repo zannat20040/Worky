@@ -14,6 +14,8 @@ import AddJobs from "./Component/Add jobs/AddJobs.jsx";
 import JobDetails from "./Component/Job Details/JobDetails.jsx";
 import PostedJobs from "./Component/Posted Jobs/PostedJobs.jsx";
 import UpdateDetails from "./Component/Update job/UpdateDetails.jsx";
+import axios from "axios";
+import JobDetail from "./JobDetail.jsx";
 
 const router = createBrowserRouter([
   {
@@ -31,8 +33,8 @@ const router = createBrowserRouter([
       {
         path: "/addjobs/:id",
         element:<PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
-        loader: ()=>fetch(`http://localhost:5000/addjobs`)
-      },
+        loader:  ({params})=>fetch(`http://localhost:5000/addjobs/${params.id}`)
+      },     
       {
         path: "/postedjobs",
         element:<PrivateRoute><PostedJobs></PostedJobs></PrivateRoute>,
