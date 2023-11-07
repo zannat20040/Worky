@@ -3,7 +3,7 @@ import logo from "../../assets/images/logo.png";
 
 const Footer = () => {
   return (
-    <div className="bg-neutral text-neutral-content mt-32">
+    <div className="bg-neutral text-neutral-content ">
       <footer className="footer p-10  container mx-auto flex  flex-wrap justify-between">
         <nav>
           <header className="footer-title">Services</header>

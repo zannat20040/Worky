@@ -67,7 +67,7 @@ const Navbar = () => {
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/" className="no-underline rounded-md py-2">
+                      <NavLink to="/postedjobs" className="no-underline rounded-md py-2">
                         My posted jobs
                       </NavLink>
                     </li>
@@ -189,7 +189,7 @@ const Navbar = () => {
                   </li>
                   <li>
                     <NavLink
-                      to="/"
+                      to="/postedjobs"
                       className="no-underline  block px-5 py-2 rounded-md"
                     >
                       My posted jobs
