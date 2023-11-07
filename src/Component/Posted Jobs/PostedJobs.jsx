@@ -12,14 +12,16 @@ const PostedJobs = () => {
   );
 
   return (
-   <div className="bg-green-50">
-     <div className=" container mx-auto py-6  px-4 pb-52 ">
-        <h1 className="text-5xl text-green-700 font-bold text-center py-5 mb-10">My all posted Jobs</h1>
+    <div className="bg-green-50">
+      <div className=" container mx-auto py-6  px-4 pb-52 ">
+        <h1 className="text-5xl text-green-700 font-bold text-center py-5 mb-10">
+          My all posted Jobs
+        </h1>
         {myPostedJobs.map((item) => (
-        <PostedJobsLayout item={item} key={item._id}></PostedJobsLayout>
-      ))}
+          <PostedJobsLayout item={item} key={item._id}></PostedJobsLayout>
+        ))}
+      </div>
     </div>
-   </div>
   );
 };
 
