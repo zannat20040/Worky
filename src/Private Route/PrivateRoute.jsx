@@ -16,10 +16,11 @@ const PrivateRoute = ({ children }) => {
     return children;
   }
   return (
-    <Navigate
-      state={{ redirectTo: location.pathname }}
-      to="/authentication/login"
-    ></Navigate>
+    // <Navigate
+    //   state={{ redirectTo: location.pathname }}
+    //   to="/authentication/login"
+    // ></Navigate>
+    <Navigate state={location.pathname} to="/authentication/login"></Navigate>
   );
 };
 

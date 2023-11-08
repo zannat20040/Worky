@@ -20,15 +20,16 @@ const location = useLocation()
       .then((userCredential) => {
         swal("Good job!", "Logged in successfully!", "success");
       
-        axios.post('https://server-side-taupe.vercel.app/jwt',{email}, {withCredentials:true})
-       .then(res=>{
-        console.log(res.data)
-       })
-       .catch(error=>{
-        console.log(error)
-       })
+      //   axios.post('https://server-side-taupe.vercel.app/jwt',{email}, {withCredentials:true})
+      //  .then(res=>{
+      //   console.log(res.data)
+      //  })
+      //  .catch(error=>{
+      //   console.log(error)
+      //  })
        
-        navigate(location?.state?.redirectTo? location?.state?.redirectTo : '/')
+      navigate(location?.state ? location.state : "/");
+
       })
       .catch((error) => {
         swal("Opps!", error.message , "error");
@@ -39,15 +40,15 @@ const location = useLocation()
     googleSignIn()
       .then((result) => {
 
-        axios.post('https://server-side-taupe.vercel.app/jwt',{result}, {withCredentials:true})
-       .then(res=>{
-        console.log(res.data)
-       })
-       .catch(error=>{
-        console.log(error)
-       })
+      //   axios.post('https://server-side-taupe.vercel.app/jwt',{result}, {withCredentials:true})
+      //  .then(res=>{
+      //   console.log(res.data)
+      //  })
+      //  .catch(error=>{
+      //   console.log(error)
+      //  })
         swal("Good job!", "Logged in successfully!", "success");
-        navigate(location?.state?.redirectTo? location?.state?.redirectTo : '/')
+        navigate(location?.state ? location.state : "/");
 
       })
       .catch((error) => {

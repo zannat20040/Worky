@@ -13,6 +13,8 @@ const Navbar = () => {
     passwordSignOut()
       .then(() => {
         swal("Good job!", "Logged out successfully!", "success");
+       
+
       })
       .catch((error) => {
         swal("Opps!", error, "error");
