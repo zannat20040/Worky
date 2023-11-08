@@ -1,9 +1,13 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const SignupLayout = ({ HandleSignup, HandleGoogleSignin }) => {
   return (
     <div className="card flex-shrink-0 w-full ">
+      <Helmet>
+        <title>Worky | Sign up</title>
+      </Helmet>
       <form className="card-body p-2" onSubmit={HandleSignup}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div className="form-control">

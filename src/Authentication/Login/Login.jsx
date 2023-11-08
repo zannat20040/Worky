@@ -3,6 +3,7 @@ import LoginLayout from "./LoginLayout";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import swal from 'sweetalert';
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const { loginWithPass, googleSignIn } = useContext(AuthContext);
@@ -18,6 +19,15 @@ const location = useLocation()
     loginWithPass(email, password)
       .then((userCredential) => {
         swal("Good job!", "Logged in successfully!", "success");
+      
+        axios.post('http://localhost:5000/jwt',{email}, {withCredentials:true})
+       .then(res=>{
+        console.log(res.data)
+       })
+       .catch(error=>{
+        console.log(error)
+       })
+       
         navigate(location?.state?.redirectTo? location?.state?.redirectTo : '/')
       })
       .catch((error) => {
@@ -28,7 +38,17 @@ const location = useLocation()
   const HandleGoogleSignin = () => {
     googleSignIn()
       .then((result) => {
+        
+        axios.post('http://localhost:5000/jwt',{result}, {withCredentials:true})
+       .then(res=>{
+        console.log(res.data)
+       })
+       .catch(error=>{
+        console.log(error)
+       })
         swal("Good job!", "Logged in successfully!", "success");
+        navigate(location?.state?.redirectTo? location?.state?.redirectTo : '/')
+
       })
       .catch((error) => {
         swal("Opps!", error , "error");

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import { Helmet } from 'react-helmet-async';
 
 const UpdateDetailsLayout = ({updateJob, HandleUpdate}) => {
     const {photo,maximum,minimum,deadline,category,email,requirement,description,title, _id} =updateJob
@@ -7,6 +8,9 @@ const UpdateDetailsLayout = ({updateJob, HandleUpdate}) => {
     const {user} = useContext(AuthContext)
     return (
         <div className="px-3 mb-52">
+          <Helmet>
+        <title>Worky | Update</title>
+      </Helmet>
         <div className="w-full md:w-3/5 mx-auto mt-20 shadow-2xl rounded-md md:p-10 p-5 ">
           <div>
             <h1 className="text-4xl font-bold text-green-700 py-7">

@@ -3,6 +3,7 @@ import { CiDollar } from "react-icons/ci";
 import { SlCalender } from "react-icons/sl";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { TbPointFilled } from "react-icons/tb";
+import { Helmet } from "react-helmet-async";
 
 const JobDetailsLayout = ({ jobDetails,HandleJobBid }) => {
   const { user } = useContext(AuthContext);
@@ -22,6 +23,9 @@ const JobDetailsLayout = ({ jobDetails,HandleJobBid }) => {
   const requirementList = requirement.split(/\d+\./).filter(Boolean);
   return (
     <>
+    <Helmet>
+        <title>Worky | Details</title>
+      </Helmet>
       <div className="bg-green-50">
         <div className="container mx-auto py-8 px-4 flex gap-9 items-center">
           <div className="">

@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import axios from "axios";
 import BidRequestLyout from "./BidRequestLyout";
+import { Helmet } from "react-helmet-async";
 
 const BidReq = () => {
   const allBidsReq = useLoaderData();
@@ -69,6 +70,9 @@ const BidReq = () => {
   }
   return (
     <div>
+      <Helmet>
+        <title>Worky | Bid Request</title>
+      </Helmet>
       <div className="container mx-auto py-6  px-4 pb-52">
         <h1 className="text-4xl font-bold text-green-700 py-7 text-center">
           My All Request

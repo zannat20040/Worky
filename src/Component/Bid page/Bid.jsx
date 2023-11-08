@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const Bid = () => {
   const allbids = useLoaderData();
@@ -36,6 +37,9 @@ const Bid = () => {
 
   return (
     <>
+    <Helmet>
+        <title>Worky | My Bids</title>
+      </Helmet>
       <div className="container mx-auto py-6  px-4 pb-52">
         <h1 className="text-4xl font-bold text-green-700 py-7 text-center">
           My All Bids

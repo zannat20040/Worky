@@ -3,11 +3,15 @@ import AuthenticationLayout from "../Component/Common/AuthenticationLayout";
 import Navbar from "../Component/Common/Navbar";
 import { Outlet } from "react-router-dom";
 import Footer from "../Component/Common/Footer";
+import { Helmet } from "react-helmet-async";
 
 const Authentication = () => {
   return (
     <>
       <Navbar></Navbar>
+      <Helmet>
+        <title>Worky | User</title>
+      </Helmet>
       <div className="px-3">
         <div className=" w-full md:w-3/5 mx-auto mt-20 shadow-xl p-5">
           <AuthenticationLayout></AuthenticationLayout>

@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 
 const LoginLayout = ({HandleLogin, HandleGoogleSignin}) => {
@@ -5,6 +6,9 @@ const LoginLayout = ({HandleLogin, HandleGoogleSignin}) => {
   
     return (
         <div className="card flex-shrink-0 w-full ">
+          <Helmet>
+        <title>Worky | Login</title>
+      </Helmet>
     <form className="" onSubmit={HandleLogin}>
       <div className="form-control">
         <label className="label">

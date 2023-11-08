@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { useLoaderData } from "react-router-dom";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 
 const PostedJobs = () => {
@@ -57,6 +58,9 @@ const PostedJobs = () => {
 
   return (
     <div className="bg-green-50">
+      <Helmet>
+        <title>Worky | Post</title>
+      </Helmet>
       <div className=" container mx-auto py-6  px-4 pb-36 ">
         <h1 className="text-5xl text-green-700 font-bold text-center py-5 mb-10">
           My all posted Jobs

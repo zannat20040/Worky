@@ -17,6 +17,7 @@ import UpdateDetails from "./Component/Update job/UpdateDetails.jsx";
 import Bid from "./Component/Bid page/Bid.jsx";
 import BidReq from "./Component/Bid Request/BidReq.jsx";
 import ErrorPage from "./ErrorPage.jsx";
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter([
   {
@@ -80,7 +81,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+    <HelmetProvider>
+    <RouterProvider router={router} />
+    </HelmetProvider>
     </AuthProvider>
   </React.StrictMode>
 );
