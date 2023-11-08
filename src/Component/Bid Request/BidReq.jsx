@@ -48,14 +48,14 @@ const BidReq = () => {
   };
 
   const HandleAccept = (id)=>{
-    console.log(id)
+    // console.log(id)
     const updatedStatus = {
         status: "in progress",
       };
       axios
       .put(`http://localhost:5000/bids/${id}`, updatedStatus)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if(res.data.modifiedCount>0){
             const updatedBids = myBidReq.map((item) =>
           item._id === id ? { ...item, status: updatedStatus.status } : item

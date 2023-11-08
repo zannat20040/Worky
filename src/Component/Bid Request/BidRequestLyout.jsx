@@ -1,14 +1,15 @@
 import React from "react";
+import Progessbar from "./Progessbar";
 
 const BidRequestLyout = ({ item, HandleStatus ,HandleAccept}) => {
   return (
-    <tr className="text-center">
-      <td className="py-4 border-b border-gray-200">{item.title}</td>
-      <td className="py-4 border-b border-gray-200">{item.bidBy}</td>
-      <td className="py-4 border-b border-gray-200">{item.deadline}</td>
-      <td className="py-4 border-b border-gray-200">{item.bidAmount}</td>
-      <td className="py-4 border-b border-gray-200">{item.status}</td>
-      <td className=" py-4 border-b border-gray-200 space-x-2 space-y-1 md:text-center text-end">
+    <tr className="text-center border-b border-gray-200">
+      <td className="py-4">{item.title}</td>
+      <td className="py-4">{item.bidBy}</td>
+      <td className="py-4">{item.deadline}</td>
+      <td className="py-4">{item.bidAmount}</td>
+      <td className="py-4">{item.status}</td>
+      <td className=" py-4  gap-3 grid-cols-1 md:text-center text-end grid md:grid-cols-2">
         {item.status === "pending" && (
           <>
             <button
@@ -24,6 +25,12 @@ const BidRequestLyout = ({ item, HandleStatus ,HandleAccept}) => {
               Rejected
             </button>
           </>
+        )}
+        {item.status === "in progress" && (
+         <Progessbar parcentage={50}></Progessbar>
+        )}
+        {item.status === "complete" && (
+         <Progessbar parcentage={100}></Progessbar>
         )}
         {item.status === "rejected" && (
           <>
