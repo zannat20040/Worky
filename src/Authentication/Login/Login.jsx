@@ -20,7 +20,7 @@ const location = useLocation()
       .then((userCredential) => {
         swal("Good job!", "Logged in successfully!", "success");
       
-        axios.post('http://localhost:5000/jwt',{email}, {withCredentials:true})
+        axios.post('https://server-side-taupe.vercel.app/jwt',{email}, {withCredentials:true})
        .then(res=>{
         console.log(res.data)
        })
@@ -38,8 +38,8 @@ const location = useLocation()
   const HandleGoogleSignin = () => {
     googleSignIn()
       .then((result) => {
-        
-        axios.post('http://localhost:5000/jwt',{result}, {withCredentials:true})
+
+        axios.post('https://server-side-taupe.vercel.app/jwt',{result}, {withCredentials:true})
        .then(res=>{
         console.log(res.data)
        })
