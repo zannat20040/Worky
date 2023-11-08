@@ -1,29 +1,71 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import axios from "axios";
+import BidRequestLyout from "./BidRequestLyout";
 
 const BidReq = () => {
   const allBidsReq = useLoaderData();
-  // console.log(allbids)
   const { user } = useContext(AuthContext);
+  const [myBidReq,setMyBidReq] = useState([])
 
-  const myBidsReq = allBidsReq.filter((item) => item.jobOwner === user.email);
+  
+  useEffect(()=>{
+    const myBidsReq = allBidsReq.filter((item) => item.jobOwner === user.email);
+      setMyBidReq(myBidsReq);
+  },[])
 
+//   console.log(myBidReq)
 
+  const HandleStatus = (id) => {
 
-  const HandleStatus = (id)=>{
+    const updatedStatus = {
+        status: "rejected",
+      };
+
+    axios
+      .get(`http://localhost:5000/bids/${id}`)
+      .then((res) => {
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    axios
+      .put(`http://localhost:5000/bids/${id}`, updatedStatus)
+      .then((res) => {
+        console.log(res.data);
+        if(res.data.modifiedCount>0){
+            const updatedBids = myBidReq.map((item) =>
+          item._id === id ? { ...item, status: updatedStatus.status } : item
+        );
+        setMyBidReq(updatedBids);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const HandleAccept = (id)=>{
     console.log(id)
-    const newStatus = "canceled";
-
-    axios.get(`http://localhost:5000/bids/${id}`)
-    .then(res=>{
-        console.log(res.data)
-    })
-    .catch(error=>{
-        console.log(error)
-    })
-
+    const updatedStatus = {
+        status: "in progress",
+      };
+      axios
+      .put(`http://localhost:5000/bids/${id}`, updatedStatus)
+      .then((res) => {
+        console.log(res.data);
+        if(res.data.modifiedCount>0){
+            const updatedBids = myBidReq.map((item) =>
+          item._id === id ? { ...item, status: updatedStatus.status } : item
+        );
+        setMyBidReq(updatedBids);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   return (
     <div>
@@ -44,33 +86,7 @@ const BidReq = () => {
               </tr>
             </thead>
             <tbody>
-              {myBidsReq.map((item) => (
-                <tr className="text-center">
-                  <td className="py-4 border-b border-gray-200">
-                    {item.title}
-                  </td>
-                  <td className="py-4 border-b border-gray-200">
-                    {item.bidBy}
-                  </td>
-                  <td className="py-4 border-b border-gray-200">
-                    {item.deadline}
-                  </td>
-                  <td className="py-4 border-b border-gray-200">
-                    {item.bidAmount}
-                  </td>
-                  <td className="py-4 border-b border-gray-200">
-                    {item.status}
-                  </td>
-                  <td className=" py-4 border-b border-gray-200 space-x-2 space-y-1 md:text-center text-end">
-                    <button className="btn text-sm btn-outline btn-sm rounded-sm bg-green-600 text-white ">
-                      Accept
-                    </button>
-                    <button className="btn text-sm btn-outline btn-sm rounded-sm bg-green-600 text-white  " onClick={()=>HandleStatus(item._id)}>
-                      Rejected
-                    </button>
-                  </td>
-                </tr>
-              ))}
+              {myBidReq.map((item) => <BidRequestLyout item={item} HandleStatus={HandleStatus} HandleAccept={HandleAccept}></BidRequestLyout>)}
             </tbody>
           </table>
         </div>

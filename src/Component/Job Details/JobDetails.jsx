@@ -28,7 +28,7 @@ const JobDetails = () => {
     };
 
 
-    console.log(sellerBid)
+    // console.log(sellerBid)
 
     axios
     .post("http://localhost:5000/bids", sellerBid)
