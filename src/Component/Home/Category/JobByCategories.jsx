@@ -7,9 +7,13 @@ import "../../../assets/all css/style.css";
 
 const JobByCategories = () => {
   const [jobByCategory, setJobByCategory] = useState([]);
-  const [selectedTab, setSelectedTab] = useState("Web Development");
+  const [selectedTab, setSelectedTab] = useState("All");
 
   const catagoryList = [
+    {
+      id: "00",
+      categoryType: "All",
+    },
     {
       id: "01",
       categoryType: "Web Development",
@@ -26,13 +30,18 @@ const JobByCategories = () => {
 
   const HandleTab = (category) => {
     axios
-      .get(`http://localhost:5000/addjobs`)
+      .get(`https://server-side-taupe.vercel.app/addjobs`)
       .then((res) => {
         const allJobData = res.data;
-        const findjobByCategory = allJobData.filter(
-          (item) => item.category === category
-        );
-        setJobByCategory(findjobByCategory);
+        if(category==='All'){
+          setJobByCategory(allJobData);
+        }
+        else{
+          const findjobByCategory = allJobData.filter(
+            (item) => item.category === category
+          );
+          setJobByCategory(findjobByCategory);
+        }
       })
       .catch((error) => {
         console.log(error);

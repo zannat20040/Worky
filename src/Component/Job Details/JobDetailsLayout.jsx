@@ -37,7 +37,7 @@ const JobDetailsLayout = ({ jobDetails,HandleJobBid }) => {
           </div>
         </div>
       </div>
-      <div className="container mx-auto py-8 px-4 grid grid-cols-2 gap-5">
+      <div className="container mx-auto py-8 px-4 grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
           <div>
             <h2 className="card-title mb-4 text-green-600">Job Description</h2>
@@ -142,7 +142,7 @@ const JobDetailsLayout = ({ jobDetails,HandleJobBid }) => {
                       </button>
                     ) : (
                       <button className="btn btn-outline bg-green-900 text-white ">
-                        Bid now
+                        Bid on this project
                       </button>
                     )}
                   </div>

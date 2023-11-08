@@ -32,7 +32,7 @@ const AddJobs = () => {
     // console.log(newJob);
 
     axios
-      .post("http://localhost:5000/addjobs", newJob)
+      .post("https://server-side-taupe.vercel.app/addjobs", newJob)
       .then((res) => {
         console.log(res.data);
         if(res.data.insertedId){

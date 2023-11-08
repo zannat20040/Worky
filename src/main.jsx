@@ -16,10 +16,12 @@ import PostedJobs from "./Component/Posted Jobs/PostedJobs.jsx";
 import UpdateDetails from "./Component/Update job/UpdateDetails.jsx";
 import Bid from "./Component/Bid page/Bid.jsx";
 import BidReq from "./Component/Bid Request/BidReq.jsx";
+import ErrorPage from "./ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    errorElement:<ErrorPage></ErrorPage>,
     element: <Root></Root>,
     children: [
       {
@@ -33,33 +35,34 @@ const router = createBrowserRouter([
       {
         path: "/addjobs/:id",
         element:<PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
-        loader:  ({params})=>fetch(`http://localhost:5000/addjobs/${params.id}`)
+        loader:  ({params})=>fetch(`https://server-side-taupe.vercel.app/addjobs/${params.id}`)
       },     
       {
         path: "/postedjobs",
         element:<PrivateRoute><PostedJobs></PostedJobs></PrivateRoute>,
-        loader: ()=>fetch(`http://localhost:5000/addjobs`)
+        loader: ()=>fetch(`https://server-side-taupe.vercel.app/addjobs`)
       },
       {
         path: "/updatejob/:id",
         element:<PrivateRoute><UpdateDetails></UpdateDetails></PrivateRoute>,
-        loader: ()=>fetch(`http://localhost:5000/addjobs`)
+        loader: ()=>fetch(`https://server-side-taupe.vercel.app/addjobs`)
       },
       {
         path: "/mybids",
         element: <PrivateRoute><Bid></Bid></PrivateRoute>,
-        loader: ()=>fetch(`http://localhost:5000/bids`)
+        loader: ()=>fetch(`https://server-side-taupe.vercel.app/bids`)
       },
       {
         path: "/bidrequest",
         element: <PrivateRoute><BidReq></BidReq></PrivateRoute>,
-        loader: ()=>fetch(`http://localhost:5000/bids`)
+        loader: ()=>fetch(`https://server-side-taupe.vercel.app/bids`)
       },
       
     ],
   },
   {
     path:'/authentication',
+    errorElement:<ErrorPage></ErrorPage>,
     element:<Authentication></Authentication>,
     children:[
       {

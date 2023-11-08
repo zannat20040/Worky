@@ -27,18 +27,27 @@ const PostedJobs = () => {
     })
     .then((willDelete) => {
       if (willDelete) {
-        console.log('enteringg here')
-        axios.delete(`http://localhost:5000/addjobs/${id}`)
-            .then(res=>{
-              console.log(res.data)
-            })
-            .catch(error=>{
-              console.log(error)
-            })
+        axios.delete(`https://server-side-taupe.vercel.app/addjobs/${id}`)
+    .then(res=>{
+      console.log(res.data)
+      if (res.data.deletedCount >0) {
+            swal("Good job!", "This job has been deleted", "success");
+            // const remaining = allConfirmOrder.filter((item) => item._id !== id);
+            // setConfirmOrder(remaining);
+          }
+    })
+        // console.log('enteringg here')
+        // axios.delete(`https://server-side-taupe.vercel.app/addjobs/${id}`)
+        //     .then(res=>{
+        //       console.log(res.data)
+        //     })
+        //     .catch(error=>{
+        //       console.log(error)
+        //     })
 
-        swal("Poof! Your imaginary file has been deleted!", {
-          icon: "success",
-        });
+        // swal("Poof! Your imaginary file has been deleted!", {
+        //   icon: "success",
+        // });
       } else {
         swal("Your imaginary file is safe!");
       }
@@ -48,7 +57,7 @@ const PostedJobs = () => {
 
   return (
     <div className="bg-green-50">
-      <div className=" container mx-auto py-6  px-4 pb-52 ">
+      <div className=" container mx-auto py-6  px-4 pb-36 ">
         <h1 className="text-5xl text-green-700 font-bold text-center py-5 mb-10">
           My all posted Jobs
         </h1>

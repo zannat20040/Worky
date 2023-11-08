@@ -31,11 +31,11 @@ const JobDetails = () => {
     // console.log(sellerBid)
 
     axios
-    .post("http://localhost:5000/bids", sellerBid)
+    .post("https://server-side-taupe.vercel.app/bids", sellerBid)
     .then((res) => {
       console.log(res.data);
       if(res.data.insertedId){
-          swal("Hurray!", "Your job post has been posted successfully!", "success");
+          swal("Hurray!", "Your have bidded successfully!", "success");
       }
     })
     .catch((error) => {

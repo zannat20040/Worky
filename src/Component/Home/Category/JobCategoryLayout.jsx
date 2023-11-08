@@ -29,7 +29,7 @@ const JobCategoryLayout = ({ item }) => {
           <div className="flex gap-2 items-center">
             <CiDollar className="text-xl text-green-600 "></CiDollar>
             <p className="text-end">
-              {item.minimum} - {item.maximum}
+              {item.minimum}$ - {item.maximum}$
             </p>
           </div>
         </div>

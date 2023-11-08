@@ -24,7 +24,7 @@ const BidReq = () => {
       };
 
     axios
-      .get(`http://localhost:5000/bids/${id}`)
+      .get(`https://server-side-taupe.vercel.app/bids/${id}`)
       .then((res) => {
       })
       .catch((error) => {
@@ -32,7 +32,7 @@ const BidReq = () => {
       });
 
     axios
-      .put(`http://localhost:5000/bids/${id}`, updatedStatus)
+      .put(`https://server-side-taupe.vercel.app/bids/${id}`, updatedStatus)
       .then((res) => {
         console.log(res.data);
         if(res.data.modifiedCount>0){
@@ -53,7 +53,7 @@ const BidReq = () => {
         status: "in progress",
       };
       axios
-      .put(`http://localhost:5000/bids/${id}`, updatedStatus)
+      .put(`https://server-side-taupe.vercel.app/bids/${id}`, updatedStatus)
       .then((res) => {
         // console.log(res.data);
         if(res.data.modifiedCount>0){
@@ -82,7 +82,7 @@ const BidReq = () => {
                 <th className=" py-5">Deadline</th>
                 <th className=" py-5">Price</th>
                 <th className=" py-5">Status</th>
-                <th className=" py-5">Complete</th>
+                <th className=" py-5">Progress</th>
               </tr>
             </thead>
             <tbody>
