@@ -1,8 +1,17 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Worky job portal website
 
-Currently, two official plugins are available:
+https://worky-7a37f.web.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+- User registration and login functionality.
+- OAuth authentication with popular social platforms (Google)for quick access.
+- Private route functionality
+- New job add, remove , update using DATABASE
+- Responsive design
+- dynamically job bid and bid request accept and reject
+- Dynamic routing for service details, making navigation seamless.
+- dynamic route title
+- 404 page for handling unmatched routes.
+
