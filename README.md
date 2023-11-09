@@ -10,8 +10,9 @@ https://worky-7a37f.web.app/
 - Private route functionality
 - New job add, remove , update using DATABASE
 - Responsive design
-- dynamically job bid and bid request accept and reject
+- Sorting  function added
+- Dynamically job bid and bid request accept and reject
 - Dynamic routing for service details, making navigation seamless.
-- dynamic route title
+- Synamic route title change
 - 404 page for handling unmatched routes.
 
