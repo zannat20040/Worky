@@ -33,10 +33,9 @@ const JobByCategories = () => {
       .get(`https://server-side-taupe.vercel.app/addjobs`)
       .then((res) => {
         const allJobData = res.data;
-        if(category==='All'){
+        if (category === "All") {
           setJobByCategory(allJobData);
-        }
-        else{
+        } else {
           const findjobByCategory = allJobData.filter(
             (item) => item.category === category
           );
@@ -48,11 +47,10 @@ const JobByCategories = () => {
       });
   };
 
-
-
   useEffect(() => {
     HandleTab(selectedTab);
   }, [selectedTab]);
+
 
   return (
     <div className="container mx-auto mt-9  px-4">
@@ -78,13 +76,15 @@ const JobByCategories = () => {
                 <JobCategoryLayout
                   item={item}
                   key={item._id}
-                
                 ></JobCategoryLayout>
               ))}
-            </div>
+            </div>   
           </TabPanel>
         ))}
+        
       </Tabs>
+
+   
     </div>
   );
 };

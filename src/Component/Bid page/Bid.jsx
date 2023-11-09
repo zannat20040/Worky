@@ -9,6 +9,8 @@ const Bid = () => {
   const { user } = useContext(AuthContext);
   const [myBid, setMyBid] = useState([]);
 
+  const email = user.email
+
   useEffect(() => {
     const myBids = allbids.filter((item) => item.bidBy === user.email);
     setMyBid(myBids);
@@ -35,17 +37,36 @@ const Bid = () => {
       });
   };
 
+  const HandleSort = (email) => {
+    console.log("works");
+    axios
+      .get(`https://server-side-taupe.vercel.app/sort`)
+      .then((res) => {
+        const data = res.data;
+        console.log(data)
+        const sortedBid= data.filter((item) => item.bidBy === user.email)
+        setMyBid(sortedBid)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <>
       <Helmet>
         <title>Worky | My Bids</title>
       </Helmet>
       <div className="container mx-auto py-6  px-4 pb-52">
-        <div>
+        <div className="flex justify-between items-center">
           <h1 className="text-4xl font-bold text-green-700 py-7 text-center">
             My All Bids
           </h1>
-          <button>Sort by status</button>
+          <button
+            className="btn btn-outline btn-sm rounded-md bg-green-600 text-white"
+            onClick={HandleSort}
+          >
+            Sort by status
+          </button>
         </div>
         <div className="overflow-x-auto ">
           <table className="bg-gray-100 mt-5 table table-xs rounded-none">
