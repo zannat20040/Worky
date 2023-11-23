@@ -4,6 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import JobCategoryLayout from "./JobCategoryLayout";
 import "../../../assets/all css/style.css";
+import PaginationLayout from "./PaginationLayout";
 
 const JobByCategories = () => {
   const [jobByCategory, setJobByCategory] = useState([]);
@@ -51,7 +52,6 @@ const JobByCategories = () => {
     HandleTab(selectedTab);
   }, [selectedTab]);
 
-
   return (
     <div className="container mx-auto mt-9  px-4">
       <h1 className="text-5xl text-green-700 font-bold text-center py-5 mb-10">
@@ -69,7 +69,7 @@ const JobByCategories = () => {
           ))}
         </TabList>
 
-        {catagoryList.map(() => (
+        {/* {catagoryList.map(() => (
           <TabPanel>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-10">
               {jobByCategory.map((item) => (
@@ -80,11 +80,16 @@ const JobByCategories = () => {
               ))}
             </div>   
           </TabPanel>
-        ))}
-        
-      </Tabs>
+        ))} */}
 
-   
+        {catagoryList.map(() => (
+          <TabPanel>
+            <PaginationLayout
+              cardData={jobByCategory}
+            ></PaginationLayout>
+          </TabPanel>
+        ))}
+      </Tabs>
     </div>
   );
 };
