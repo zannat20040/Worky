@@ -28,7 +28,7 @@ const location = useLocation()
       //   console.log(error)
       //  })
        
-      navigate(location?.state ? location.state : "/");
+      navigate(location?.state?.redirectTo? location?.state?.redirectTo : '/')
 
       })
       .catch((error) => {
@@ -48,7 +48,7 @@ const location = useLocation()
       //   console.log(error)
       //  })
         swal("Good job!", "Logged in successfully!", "success");
-        navigate(location?.state ? location.state : "/");
+        navigate(location?.state?.redirectTo? location?.state?.redirectTo : '/')
 
       })
       .catch((error) => {

@@ -24,14 +24,15 @@ const SignupLayout = ({ HandleSignup, HandleGoogleSignin }) => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Photo URL</span>
+              <span className="label-text">Photo </span>
             </label>
             <input
-              type="url"
-              placeholder="url"
-              className="input input-bordered"
+              type="file"
+              className="file-input file-input-bordered w-full "
+              placeholder="photo url"
               required
-              name="url"
+              name="photo"
+              accept="image/*"
             />
           </div>
         </div>
@@ -76,8 +77,15 @@ const SignupLayout = ({ HandleSignup, HandleGoogleSignin }) => {
       </div>
       <div className="flex gap-4 justify-center items-center px-2 mt-4">
         <p>Or, Create account with</p>
-        <button className="w-10 h-10flex justify-center items-center text-lg text-white rounded-[50%]" onClick={HandleGoogleSignin}>
-          <img src='https://static-00.iconduck.com/assets.00/google-icon-2048x2048-czn3g8x8.png' alt="" className='avater rounded-full'/>
+        <button
+          className="w-10 h-10flex justify-center items-center text-lg text-white rounded-[50%]"
+          onClick={HandleGoogleSignin}
+        >
+          <img
+            src="https://static-00.iconduck.com/assets.00/google-icon-2048x2048-czn3g8x8.png"
+            alt=""
+            className="avater rounded-full"
+          />
         </button>
       </div>
     </div>

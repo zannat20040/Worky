@@ -36,12 +36,14 @@ const AddJobsLayout = ({ HandleAddJobs }) => {
                     <span className="label-text">Job Thummbnail</span>
                   </label>
                   <input
-                    type="url"
+                    type="file"
+                    className="file-input file-input-bordered w-full " 
                     placeholder="photo url"
-                    className="input input-bordered"
                     required
                     name="photo"
+                    accept="image/*"
                   />
+                
                 </div>
               </div>
 

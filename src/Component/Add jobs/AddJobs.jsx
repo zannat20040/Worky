@@ -2,9 +2,10 @@ import React from "react";
 import AddJobsLayout from "./AddJobsLayout";
 import axios from "axios";
 import swal from "sweetalert";
+import { imgUpload } from "../../api/ImgUpload";
 
 const AddJobs = () => {
-  const HandleAddJobs = (e) => {
+  const HandleAddJobs = async e => {
     e.preventDefault();
 
     const form = e.target;
@@ -16,8 +17,11 @@ const AddJobs = () => {
     const deadline = form.deadline.value;
     const minimum = form.minimum.value;
     const maximum = form.maximum.value;
-    const photo = form.photo.value;
-
+    // const photo = form.photo.value;
+    const image = form.photo.files[0];
+    const photo = await imgUpload(image)    
+    // console.log(photo)
+   
     const newJob = {
       title: title,
       description: description,
@@ -27,11 +31,11 @@ const AddJobs = () => {
       deadline: deadline,
       minimum: minimum,
       maximum: maximum,
-      photo: photo
+      photo: photo,
     };
     // console.log(newJob);
 
-    axios
+    await axios
       .post("https://server-side-taupe.vercel.app/addjobs", newJob)
       .then((res) => {
         console.log(res.data);
@@ -42,8 +46,6 @@ const AddJobs = () => {
       .catch((error) => {
         console.log(error);
       });
-
-   
   };
   return <AddJobsLayout HandleAddJobs={HandleAddJobs}></AddJobsLayout>;
 };

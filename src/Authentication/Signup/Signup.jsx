@@ -3,18 +3,22 @@ import SignupLayout from "./SignupLayout";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import swal from 'sweetalert';
+import { useLocation, useNavigate } from "react-router-dom";
+import { imgUpload } from "../../api/ImgUpload";
 
 const Signup = () => {
   const { createWithPass , googleSignIn} = useContext(AuthContext);
-
-  const HandleSignup = (e) => {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const HandleSignup = async(e) => {
     e.preventDefault();
 
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const url = form.url.value;
+   const image = form.photo.files[0];
+    const photo = await imgUpload(image)    
 
     // console.log(name, email, password, url);
 
@@ -22,10 +26,11 @@ const Signup = () => {
       .then((userCredential) => {
         const user = userCredential.user
         swal("Good job!", "Signed up successfully!", "success");
+        navigate(location?.state?.redirectTo? location?.state?.redirectTo : '/')
 
         updateProfile(user ,{
           displayName: name,
-          photoURL: url
+          photoURL: photo
         })
           .then(() => {
           })
@@ -44,6 +49,8 @@ const HandleGoogleSignin =()=>{
   googleSignIn()
     .then((result) => {
       swal("Good job!", "Signed up successfully!", "success");
+      navigate(location?.state?.redirectTo? location?.state?.redirectTo : '/')
+
     }).catch((error) => {
       swal("Opps!", error , "error");
     });

@@ -3,13 +3,14 @@ import UpdateDetailsLayout from "./UpdateDetailsLayout";
 import { useLoaderData, useParams } from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
+import { imgUpload } from "../../api/ImgUpload";
 
 const UpdateDetails = () => {
   const allPostedJobs = useLoaderData();
   const params = useParams();
   const updateJob = allPostedJobs.find((item) => item._id === params.id);
 
-  const HandleUpdate=(e,id)=>{
+  const HandleUpdate=async (e,id)=>{
     e.preventDefault()
 
     const form = e.target;
@@ -21,7 +22,9 @@ const UpdateDetails = () => {
     const deadline = form.deadline.value;
     const minimum = form.minimum.value;
     const maximum = form.maximum.value;
-    const photo = form.photo.value;
+    const image = form.photo.files[0];
+    const photo = await imgUpload(image)    
+    // console.log(photo)
 
     const updateDetails = {
       title: title,
@@ -35,7 +38,7 @@ const UpdateDetails = () => {
       photo: photo
     };
 
-    console.log(updateDetails)
+    // console.log(updateDetails)
 
     axios
       .put(`https://server-side-taupe.vercel.app/addjobs/${id}`, updateDetails)

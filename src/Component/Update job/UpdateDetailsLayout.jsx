@@ -14,7 +14,7 @@ const UpdateDetailsLayout = ({updateJob, HandleUpdate}) => {
         <div className="w-full md:w-3/5 mx-auto mt-20 shadow-2xl rounded-md md:p-10 p-5 ">
           <div>
             <h1 className="text-4xl font-bold text-green-700 py-7">
-              Posted a New Job
+              Update the New Job
             </h1>
             <div className="card flex-shrink-0 w-full ">
               <form className="card-body p-2" onSubmit={(e)=>HandleUpdate(e,_id)}>
@@ -37,12 +37,13 @@ const UpdateDetailsLayout = ({updateJob, HandleUpdate}) => {
                       <span className="label-text">Job Thummbnail</span>
                     </label>
                     <input
-                      type="url"
-                      placeholder="photo url"
-                      className="input input-bordered"
-                      required
-                      name="photo" defaultValue={photo}
-                    />
+                    type="file"
+                    className="file-input file-input-bordered w-full " 
+                    placeholder="photo url"
+                    required
+                    name="photo"
+                    accept="image/*"
+                  />
                   </div>
                 </div>
   
